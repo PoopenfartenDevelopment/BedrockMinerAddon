@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "id": "addon-template",
+  "id": "bedrock-breaker",
   "version": "${version}",
-  "name": "Addon Template",
-  "description": "An addon template for the Meteor addons.",
+  "name": "BedrockBreakerAddon",
+  "description": "aposidfjopaehrkqjbflkjbjbvhzpxocvb",
   "authors": [
     "seasnail"
   ],
@@ -14,7 +14,7 @@
   "environment": "client",
   "entrypoints": {
     "meteor": [
-      "com.example.addon.Addon"
+      "com.skid.bedrockbreaker.BedrockBreaker"
     ]
   },
   "mixins": [
