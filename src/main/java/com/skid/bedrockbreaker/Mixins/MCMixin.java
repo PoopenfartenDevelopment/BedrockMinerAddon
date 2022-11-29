@@ -15,9 +15,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 import com.skid.bedrockbreaker.Utils.BreakingFlowController;
 
-import static meteordevelopment.meteorclient.utils.player.ChatUtils.info;
-
-
 @Mixin(MinecraftClient.class)
 public class MCMixin {
 

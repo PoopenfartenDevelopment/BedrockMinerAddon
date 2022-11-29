@@ -1,8 +1,9 @@
-# Meteor Addon Template
+# Bedrock Breaker meteor addon
 
-A template to allow easy usage of the Meteor Addon API.
+I take no credit for anything used in this client I only made this for convenience 
+this is the original mod
+https://github.com/LXYan2333/Fabric-Bedrock-Miner
 
-### How to use:  
-- Clone this project
-- Use this template to create new modules/commands
+
+### How to use:
 - Run the mod with Meteor.
