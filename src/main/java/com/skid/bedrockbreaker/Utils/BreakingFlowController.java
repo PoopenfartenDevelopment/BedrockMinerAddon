@@ -94,12 +94,6 @@ public class BreakingFlowController {
             working = false;
         } else {
             Messager.chat("bedrockminer.toggle.on");
-
-            MinecraftClient minecraftClient = MinecraftClient.getInstance();
-            if (!minecraftClient.isInSingleplayer()){
-
-                Messager.chat("bedrockminer.warn.multiplayer");
-            }
             working = true;
         }
     }
@@ -108,6 +102,5 @@ public class BreakingFlowController {
     enum WorkingMode {
         CARPET_EXTRA,
         VANILLA,
-        MANUALLY;
     }
 }
