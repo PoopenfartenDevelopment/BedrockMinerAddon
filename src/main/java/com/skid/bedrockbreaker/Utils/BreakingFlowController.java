@@ -89,11 +89,8 @@ public class BreakingFlowController {
 
     public static void switchOnOff(){
         if (working){
-            Messager.chat("bedrockminer.toggle.off");
-
             working = false;
         } else {
-            Messager.chat("bedrockminer.toggle.on");
             working = true;
         }
     }
