@@ -32,8 +32,6 @@ public class BreakingFlowController {
                 TargetBlock targetBlock = new TargetBlock(pos, world);
                 cachedTargetBlockList.add(targetBlock);
             }
-        } else {
-            Messager.rawactionBar("请确保敲击的方块还是基岩！");
         }
     }
 

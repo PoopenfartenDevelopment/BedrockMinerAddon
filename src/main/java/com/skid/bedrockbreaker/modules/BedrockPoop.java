@@ -4,9 +4,9 @@ import com.skid.bedrockbreaker.Utils.BreakingFlowController;
 import meteordevelopment.meteorclient.systems.modules.Categories;
 import meteordevelopment.meteorclient.systems.modules.Module;
 
-public class activate extends Module {
-    public activate() {
-        super(Categories.World,"activate","asdjhfahefashdfpoas");
+public class BedrockPoop extends Module {
+    public BedrockPoop() {
+        super(Categories.World,"BedrockBreaker","asdjhfahefashdfpoas");
     }
 
     @Override

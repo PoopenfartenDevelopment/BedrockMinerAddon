@@ -9,12 +9,5 @@ public class Messager {
         MinecraftClient minecraftClient = MinecraftClient.getInstance();
         minecraftClient.inGameHud.setOverlayMessage(Text.translatable(message),false);
     }
-    public static void rawactionBar(String message){
-        MinecraftClient minecraftClient = MinecraftClient.getInstance();
-        Text text = Text.literal(message);
-        minecraftClient.inGameHud.setOverlayMessage(text,false);
-    }
-
-
 }
 

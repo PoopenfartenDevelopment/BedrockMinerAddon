@@ -1,5 +1,6 @@
 package com.skid.bedrockbreaker.Utils;
 
+import meteordevelopment.meteorclient.utils.player.InvUtils;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.MinecraftClient;
@@ -15,7 +16,7 @@ import net.minecraft.network.packet.c2s.play.UpdateSelectedSlotC2SPacket;
 import net.minecraft.tag.FluidTags;
 
 public class InventoryManager {
-    public static boolean switchToItem(ItemConvertible item) {
+    public static void switchToItem(ItemConvertible item) {
         MinecraftClient minecraftClient = MinecraftClient.getInstance();
         PlayerInventory playerInventory = minecraftClient.player.getInventory();
 
@@ -32,9 +33,7 @@ public class InventoryManager {
                 minecraftClient.interactionManager.pickFromInventory(i);
             }
             minecraftClient.getNetworkHandler().sendPacket(new UpdateSelectedSlotC2SPacket(playerInventory.selectedSlot));
-            return true;
         }
-        return false;
     }
 
     private static int getEfficientTool(PlayerInventory playerInventory) {
@@ -114,25 +113,20 @@ public class InventoryManager {
     }
 
     public static String warningMessage() {
-        MinecraftClient minecraftClient = MinecraftClient.getInstance();
-        if (!"survival".equals(minecraftClient.interactionManager.getCurrentGameMode().getName())) {
-            return "bedrockminer.fail.missing.survival";
-        }
-
         if (InventoryManager.getInventoryItemCount(Blocks.PISTON) < 2) {
-            return "bedrockminer.fail.missing.piston";
+            return "missing piston";
         }
 
         if (InventoryManager.getInventoryItemCount(Blocks.REDSTONE_TORCH) < 1) {
-            return "bedrockminer.fail.missing.redstonetorch";
+            return "missing reds-tone torch";
         }
 
         if (InventoryManager.getInventoryItemCount(Blocks.SLIME_BLOCK)<1){
-            return "bedrockminer.fail.missing.slime";
+            return "missing slime";
         }
 
         if (!InventoryManager.canInstantlyMinePiston()) {
-            return "bedrockminer.fail.missing.instantmine";
+            return "missing instant mine";
         }
         return null;
     }
