@@ -26,29 +26,21 @@ public class BlockPlacer {
     public static void pistonPlacement(BlockPos pos, Direction direction) {
         MinecraftClient minecraftClient = MinecraftClient.getInstance();
         double x = pos.getX();
-
-        switch (BreakingFlowController.getWorkingMode()) {
-            case CARPET_EXTRA:
-                x = x + 2 + direction.getId() * 2;
+        PlayerEntity player = minecraftClient.player;
+        float pitch;
+        switch (direction) {
+            case UP:
+                pitch = 90f;
                 break;
-            case VANILLA:
-                PlayerEntity player = minecraftClient.player;
-                float pitch;
-                switch (direction) {
-                    case UP:
-                        pitch = 90f;
-                        break;
-                    case DOWN:
-                        pitch = -90f;
-                        break;
-                    default:
-                        pitch = 90f;
-                        break;
-                }
-
-                minecraftClient.getNetworkHandler().sendPacket(new PlayerMoveC2SPacket.LookAndOnGround(player.getYaw(1.0f), pitch, player.isOnGround()));
+            case DOWN:
+                pitch = -90f;
+                break;
+            default:
+                pitch = 90f;
                 break;
         }
+
+        minecraftClient.getNetworkHandler().sendPacket(new PlayerMoveC2SPacket.LookAndOnGround(player.getYaw(1.0f), pitch, player.isOnGround()));
 
         Vec3d vec3d = new Vec3d(x, pos.getY(), pos.getZ());
 

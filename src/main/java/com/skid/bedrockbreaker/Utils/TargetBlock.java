@@ -52,22 +52,19 @@ public class TargetBlock {
             case UNEXTENDED_WITH_POWER_SOURCE:
                 break;
             case EXTENDED:
-                //打掉红石火把
                 ArrayList<BlockPos> nearByRedstoneTorchPosList = CheckingEnvironment.findNearbyRedstoneTorch(world, pistonBlockPos);
                 for (BlockPos pos : nearByRedstoneTorchPosList) {
-                    BlockBreaker.breakBlock(world, pos);
+                    BlockBreaker.breakBlock(pos);
                 }
-                //打掉活塞
-                BlockBreaker.breakBlock(this.world, this.pistonBlockPos);
-                //放置朝下的活塞
+                BlockBreaker.breakBlock(this.pistonBlockPos);
                 BlockPlacer.pistonPlacement(this.pistonBlockPos, Direction.DOWN);
                 this.hasTried = true;
                 break;
             case RETRACTED:
-                BlockBreaker.breakBlock(world, pistonBlockPos);
-                BlockBreaker.breakBlock(world, pistonBlockPos.up());
+                BlockBreaker.breakBlock(pistonBlockPos);
+                BlockBreaker.breakBlock(pistonBlockPos.up());
                 if (this.slimeBlockPos != null) {
-                    BlockBreaker.breakBlock(world, slimeBlockPos);
+                    BlockBreaker.breakBlock(slimeBlockPos);
                 }
                 return Status.RETRACTED;
             case RETRACTING:
@@ -77,12 +74,12 @@ public class TargetBlock {
                 BlockPlacer.simpleBlockPlacement(this.redstoneTorchBlockPos, Blocks.REDSTONE_TORCH);
                 break;
             case FAILED:
-                BlockBreaker.breakBlock(world, pistonBlockPos);
-                BlockBreaker.breakBlock(world, pistonBlockPos.up());
+                BlockBreaker.breakBlock(pistonBlockPos);
+                BlockBreaker.breakBlock(pistonBlockPos.up());
                 return Status.FAILED;
             case STUCK:
-                BlockBreaker.breakBlock(world, pistonBlockPos);
-                BlockBreaker.breakBlock(world, pistonBlockPos.up());
+                BlockBreaker.breakBlock(pistonBlockPos);
+                BlockBreaker.breakBlock(pistonBlockPos.up());
                 break;
             case NEEDS_WAITING:
                 break;
@@ -90,7 +87,7 @@ public class TargetBlock {
         return null;
     }
 
-    enum Status {
+    public enum Status {
         FAILED,
         UNINITIALIZED,
         UNEXTENDED_WITH_POWER_SOURCE,
@@ -110,10 +107,6 @@ public class TargetBlock {
         return world;
     }
 
-    public Status getStatus() {
-        return status;
-    }
-
     private void updateStatus() {
         if (this.tickTimes > 40) {
             this.status = Status.FAILED;
@@ -127,7 +120,7 @@ public class TargetBlock {
                 redstoneTorchBlockPos = slimeBlockPos.up();
             } else {
                 this.status = Status.FAILED;
-                Messager.actionBar("bedrockminer.fail.place.redstonetorch");
+                Messager.actionBar("failed to place redstone torch");
             }
         } else if (!this.world.getBlockState(this.blockPos).isOf(Blocks.BEDROCK) && this.world.getBlockState(this.pistonBlockPos).isOf(Blocks.PISTON)) {
             this.status = Status.RETRACTED;
@@ -150,7 +143,7 @@ public class TargetBlock {
             this.status = Status.UNINITIALIZED;
         } else if (!CheckingEnvironment.has2BlocksOfPlaceToPlacePiston(world, this.blockPos)) {
             this.status = Status.FAILED;
-            Messager.actionBar("bedrockminer.fail.place.piston");
+            Messager.actionBar("failed to place piston");
         } else {
             this.status = Status.FAILED;
         }

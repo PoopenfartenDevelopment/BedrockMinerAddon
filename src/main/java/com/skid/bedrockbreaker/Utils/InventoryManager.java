@@ -118,7 +118,7 @@ public class InventoryManager {
         }
 
         if (InventoryManager.getInventoryItemCount(Blocks.REDSTONE_TORCH) < 1) {
-            return "missing reds-tone torch";
+            return "missing redstone torch";
         }
 
         if (InventoryManager.getInventoryItemCount(Blocks.SLIME_BLOCK)<1){

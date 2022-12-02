@@ -7,7 +7,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 
 public class BlockBreaker {
-    public static void breakBlock(ClientWorld world, BlockPos pos) {
+    public static void breakBlock(BlockPos pos) {
         InventoryManager.switchToItem(Items.DIAMOND_PICKAXE);
         MinecraftClient.getInstance().interactionManager.attackBlock(pos, Direction.UP);
     }
