@@ -1,6 +1,5 @@
 package com.skid.bedrockbreaker.Utils;
 
-import meteordevelopment.meteorclient.utils.player.InvUtils;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.MinecraftClient;
@@ -13,7 +12,7 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.packet.c2s.play.UpdateSelectedSlotC2SPacket;
-import net.minecraft.tag.FluidTags;
+import net.minecraft.registry.tag.FluidTags;
 
 public class InventoryManager {
     public static void switchToItem(ItemConvertible item) {

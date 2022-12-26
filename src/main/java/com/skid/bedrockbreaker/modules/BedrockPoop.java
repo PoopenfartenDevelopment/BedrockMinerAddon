@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class BedrockPoop extends Module {
     public BedrockPoop() {
-        super(Categories.World,"BedrockBreaker","breaks the bedrock (requires haste 2)");
+        super(Categories.World,"bedrock-breaker","Breaks bedrock automatically (requires haste 2).");
     }
 
     private static ArrayList<TargetBlock> cachedTargetBlockList = new ArrayList<>();
